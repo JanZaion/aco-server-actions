@@ -5,6 +5,8 @@ import WidgetSelector from './components/WidgetSelector';
 // The sql query never makes it to the browser
 export default async function Home() {
   try {
+    console.log('<--- we load data on the server, so we can see this in the node console --->');
+
     const data = await sql<Widget>`
       SELECT widget, color
       FROM widgets`;
