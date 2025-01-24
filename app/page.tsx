@@ -1,7 +1,27 @@
-export default function Home() {
-  return (
-    <main className="min-h-screen">
-      <h1>Welcome</h1>
-    </main>
-  );
+import { sql } from '@vercel/postgres';
+import WidgetSelector from './components/WidgetSelector';
+
+// This component runs on the server
+// The sql query never makes it to the browser
+export default async function Home() {
+  try {
+    const data = await sql<Widget>`
+      SELECT widget, color
+      FROM widgets`;
+
+    // Serialize the data before passing to client component
+    const widgets = data.rows.map((row) => ({
+      widget: row.widget,
+      color: row.color,
+    }));
+
+    return (
+      <main className="min-h-screen">
+        {/* This component runs in the browser */}
+        <WidgetSelector widgets={widgets} />
+      </main>
+    );
+  } catch (error) {
+    throw error;
+  }
 }
