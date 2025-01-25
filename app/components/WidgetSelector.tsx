@@ -18,6 +18,10 @@ export default function WidgetSelector({ widgets }: WidgetSelectorProps) {
     setSelectedWidget(widget);
     const color = widgets.find((w) => w.widget === widget)?.color || '';
     setSelectedColor(color);
+    console.log(
+      '\x1b[32m%s\x1b[0m',
+      '<--- we pick widget on the client, so we can see this in the browser console --->'
+    );
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

@@ -11,7 +11,7 @@ export async function savePickedWidget(widget: string) {
       VALUES (${id}, ${widget}, ${new Date().toISOString()})
     `;
 
-    console.log('<--- we save data on the server, so we can see this in the node console --->');
+    console.log('\x1b[36m%s\x1b[0m', '<--- we save data on the server, so we can see this in the node console --->');
     return { success: true, id };
   } catch (error) {
     console.error('Failed to save picked widget:', error);
