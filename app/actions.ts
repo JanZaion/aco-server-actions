@@ -7,8 +7,8 @@ export async function savePickedWidget(widget: string) {
   try {
     const id = uuidv4();
     await sql`
-      INSERT INTO picked (widget, date)
-      VALUES (${`${widget}_${id}`}, ${new Date().toISOString()})
+      INSERT INTO picked (id, widget, date)
+      VALUES (${id}, ${widget}, ${new Date().toISOString()})
     `;
 
     console.log('<--- we save data on the server, so we can see this in the node console --->');
