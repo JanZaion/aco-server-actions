@@ -11,6 +11,8 @@ export default async function Home() {
       SELECT widget, color
       FROM widgets`;
 
+    // or call api closer to db
+
     // Serialize the data before passing to client component
     const widgets = data.rows.map((row) => ({
       widget: row.widget,

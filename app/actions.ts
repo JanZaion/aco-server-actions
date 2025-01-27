@@ -11,6 +11,8 @@ export async function savePickedWidget(widget: string) {
       VALUES (${id}, ${widget}, ${new Date().toISOString()})
     `;
 
+    // or we can call api closer to db
+
     console.log('\x1b[36m%s\x1b[0m', '<--- we save data on the server, so we can see this in the node console --->');
     return { success: true, id };
   } catch (error) {
